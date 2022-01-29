@@ -1,0 +1,17 @@
+[
+{
+  "modid": "${modId}",
+  "name": "${modName}",
+  "description": "Example placeholder mod.",
+  "version": "${modVersion}",
+  "mcversion": "${minecraftVersion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["denoflionsx"],
+  "credits": "Decompiled INPureCore",
+  "license": "IDGAF License",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
