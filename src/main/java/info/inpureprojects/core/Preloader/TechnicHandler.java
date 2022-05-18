@@ -10,6 +10,7 @@ import java.util.Set;
 public class TechnicHandler {
     public static final TechnicHandler instance = new TechnicHandler();
 
+    @SuppressWarnings("unchecked")
     public void reparse(ArrayList<String> list) {
         Set<String> set = new HashSet<String>();
         set.addAll(GameData.getItemRegistry().getKeys());

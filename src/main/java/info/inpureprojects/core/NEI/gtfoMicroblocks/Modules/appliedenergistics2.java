@@ -19,6 +19,7 @@ public class appliedenergistics2
     }
 
 
+    @SuppressWarnings("unchecked")
     public void run() {
         INpureCore.proxy.print("Oh look, more facades. Did we really need another version of these? (Hiding AE facades)");
         try {

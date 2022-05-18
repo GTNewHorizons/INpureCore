@@ -31,6 +31,7 @@ public class ProxyCommon
             }
 
 
+            @SuppressWarnings("rawtypes")
             public Object WrapScript(IScriptingCore core, Object obj, Class Interface) {
                 return DynamicFactory.instance.create(core, obj, Interface);
             }

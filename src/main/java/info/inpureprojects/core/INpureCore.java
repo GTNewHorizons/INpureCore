@@ -22,18 +22,17 @@ import info.inpureprojects.core.NEI.gtfoMicroblocks.Commands.CommandReload;
 import info.inpureprojects.core.Preloader.ModuleManager;
 import info.inpureprojects.core.Proxy.Proxy;
 import info.inpureprojects.core.Updater.UpdateManager;
-import net.minecraft.command.ICommand;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
 import java.util.ArrayList;
 
-@Mod(modid = "inpure|core", name = "INpureCore", version = "1.7.10R1.0.0B9", dependencies = "after:ExtraUtilities")
+@Mod(modid = modInfo.modid, name = modInfo.name, version = modInfo.version, dependencies = modInfo.deps)
 public class INpureCore {
     @Instance("inpure|core")
     public static INpureCore instance;
     public static ArrayList<IINpureSubmodule> modules = new ArrayList<IINpureSubmodule>();
-    @SidedProxy(clientSide = "info.inpureprojects.core.Proxy.ProxyClient", serverSide = "info.inpureprojects.core.Proxy.ProxyCommon")
+    @SidedProxy(clientSide = modInfo.proxyClient, serverSide = modInfo.proxyCommon)
     public static Proxy proxy;
     public static PropertiesHolder properties;
     public static LogWrapper log;

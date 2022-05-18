@@ -5,7 +5,7 @@
   "description": "Example placeholder mod.",
   "version": "${modVersion}",
   "mcversion": "${minecraftVersion}",
-  "url": "",
+  "url": "https://github.com/GTNewHorizons/INpureCore",
   "updateUrl": "",
   "authorList": ["denoflionsx"],
   "credits": "Decompiled INPureCore",

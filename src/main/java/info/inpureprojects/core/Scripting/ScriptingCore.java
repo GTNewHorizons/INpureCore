@@ -1,7 +1,6 @@
 package info.inpureprojects.core.Scripting;
 
 import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.ModContainer;
 import info.inpureprojects.core.API.Events.EventScriptError;
 import info.inpureprojects.core.API.Events.INpureEventBus;
 import info.inpureprojects.core.API.Scripting.CanBeNull;

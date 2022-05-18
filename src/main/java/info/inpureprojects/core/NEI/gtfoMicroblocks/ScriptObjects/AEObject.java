@@ -20,12 +20,13 @@ public class AEObject {
         return i;
     }
 
+    @SuppressWarnings("unchecked")
     public List<ItemStack> getSubTypes() {
         NEIINpureConfig.logger.debug("getSubTypes called.");
         try {
-            Field f = (AEApi.instance().items()).itemFacade.item().getClass().getDeclaredField("subTypes");
+            Field f = AEApi.instance().definitions().items().facade().maybeItem().get().getClass().getDeclaredField("subTypes");
             f.setAccessible(true);
-            List<ItemStack> list = (List<ItemStack>) f.get((AEApi.instance().items()).itemFacade.item());
+            List<ItemStack> list = (List<ItemStack>) f.get((AEApi.instance().definitions().items()).facade().maybeItem().get());
             return list;
         } catch (Throwable t) {
             t.printStackTrace();
@@ -35,7 +36,7 @@ public class AEObject {
     }
 
     public String getFacadeItem() {
-        NEIObject.UniqueIDSettable id = new NEIObject.UniqueIDSettable(GameRegistry.findUniqueIdentifierFor((AEApi.instance().items()).itemFacade.item()));
+        NEIObject.UniqueIDSettable id = new NEIObject.UniqueIDSettable(GameRegistry.findUniqueIdentifierFor(AEApi.instance().definitions().items().facade().maybeItem().get()));
         NEIINpureConfig.logger.debug("getFacadeItem called. Returned: %s:%s", id.getModId(), id.getName());
         return String.format("%s:%s", id.getModId(), id.getName());
     }

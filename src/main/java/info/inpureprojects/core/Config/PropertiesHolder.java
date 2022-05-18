@@ -28,7 +28,6 @@ public class PropertiesHolder {
     public boolean silence_cant_keep_up = false;
     @DeprecatedOption(category = "scripting", key = "use_community_scripts")
     public boolean use_community_scripts = false;
-    private static final String remove = "removed_options_please_ignore";
 
     public PropertiesHolder(Configuration config) {
         config.load();
