@@ -2,10 +2,7 @@ package info.inpureprojects.core.Scripting.Objects;
 
 
 public class JavaScriptCompressor {
-    private static final char LINE_FEED = '\n';
-    private static final char CARRIAGE_RETURN = '\r';
-    private static final char SPACE = ' ';
-    private static final char TAB = '\t';
+
     private final String script;
     private final StringBuffer outputBuffer;
     private int pos;

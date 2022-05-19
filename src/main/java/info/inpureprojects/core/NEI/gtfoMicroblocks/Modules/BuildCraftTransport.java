@@ -17,6 +17,7 @@ public class BuildCraftTransport
     }
 
 
+    @SuppressWarnings("unchecked")
     public void run() {
         INpureCore.proxy.print("Running all the BC facades off with a broom. (Who uses pipes, seriously?)");
         try {

@@ -6,9 +6,6 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import info.inpureprojects.core.API.PreloaderAPI;
-import info.inpureprojects.core.API.Utils.Downloader;
-import info.inpureprojects.core.Preloader.DepHandler.INpureDepHandler;
-import org.apache.commons.io.FilenameUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -27,7 +24,6 @@ public class INpurePreLoader
     public static File versionFolder;
     public static FMLLogInterceptor fmlLogInterceptor;
     private static final Logger log = LogManager.getLogger("INpurePreloader");
-    private final INpureDepHandler dep = new INpureDepHandler();
 
     public static void forceLoad(File file) {
         try {
@@ -55,22 +51,8 @@ public class INpurePreLoader
     public void injectData(Map<String, Object> data) {
         print("Attempting to detect JVM version...");
         print("Detected JVM: " + JavaDetection.detectJava().getProp());
-        isDev = !((Boolean) data.get("runtimeDeobfuscationEnabled")).booleanValue();
-        if (isDev) {
+        if (!((Boolean) data.get("runtimeDeobfuscationEnabled"))) {
             print("We are in dev mode!");
-        }
-        mc = (File) data.get("mcLocation");
-        File mods = new File(mc, "mods");
-        versionFolder = new File(mods, "1.7.10");
-        if (!versionFolder.exists()) {
-            versionFolder.mkdirs();
-        }
-        print("Starting library configuration...");
-        for (String s : this.dep.readStream(getClass().getClassLoader().getResourceAsStream("resources.inpure"))) {
-            File inject = new File(versionFolder, FilenameUtils.getName(s));
-            if (!isDev) {
-                Downloader.instance.download(s, inject);
-            }
         }
         source = (File) data.get("coremodLocation");
         PreloaderAPI.modules = new ModuleManager();

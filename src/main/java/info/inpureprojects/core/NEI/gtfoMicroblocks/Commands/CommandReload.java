@@ -22,7 +22,7 @@ public class CommandReload
     }
 
 
-    public List getCommandAliases() {
+    public List<String> getCommandAliases() {
         return Arrays.asList("inpurecore");
     }
 
@@ -47,7 +47,7 @@ public class CommandReload
     }
 
 
-    public List addTabCompletionOptions(ICommandSender p_71516_1_, String[] p_71516_2_) {
+    public List<String> addTabCompletionOptions(ICommandSender p_71516_1_, String[] p_71516_2_) {
         return Arrays.asList("reload", "tooltips");
     }
 

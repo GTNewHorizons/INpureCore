@@ -11,6 +11,7 @@ import java.lang.reflect.Proxy;
 public class DynamicFactory {
     public static final DynamicFactory instance = new DynamicFactory();
 
+    @SuppressWarnings("rawtypes")
     public Object create(IScriptingCore core, Object obj, Class Interface) {
         try {
             DynamicHandler h = new DynamicHandler(core, obj);

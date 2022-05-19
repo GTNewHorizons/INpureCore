@@ -1,7 +1,6 @@
 package info.inpureprojects.core.Client;
 
 import cpw.mods.fml.common.ModContainer;
-import info.inpureprojects.core.API.Scripting.Toc.TocManager;
 import net.minecraft.client.resources.IResourcePack;
 import net.minecraft.client.resources.data.IMetadataSection;
 import net.minecraft.client.resources.data.IMetadataSerializer;
@@ -39,13 +38,6 @@ public class ResourcePackScript
 
     private File getFileFromLoc(ResourceLocation loc) {
         File firstDir = new File(this.script.getSource(), loc.getResourceDomain());
-        TocManager.TableofContents toc = null;
-        for (TocManager.TableofContents c : this.script.getCore().getLoadedModules()) {
-            if (c.getTitle().equals(loc.getResourceDomain())) {
-                toc = c;
-                break;
-            }
-        }
         File resourceDir = new File(firstDir, "/resources");
         File actualFile = new File(resourceDir, "/" + loc.getResourcePath());
         return actualFile;
@@ -57,7 +49,7 @@ public class ResourcePackScript
     }
 
 
-    public Set getResourceDomains() {
+    public Set<String> getResourceDomains() {
         return this.set;
     }
 
