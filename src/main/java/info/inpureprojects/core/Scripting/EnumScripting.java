@@ -15,7 +15,7 @@ public enum EnumScripting {
     JAVASCRIPT(".js", (JavaDetection.detectJava()).JavaScript_Callsign, new jsHandler());
 
     static {
-        m = new ScriptEngineManager(null);
+        m = new ScriptEngineManager(EnumScripting.class.getClassLoader());
     }
 
     public static ScriptEngineManager m;
