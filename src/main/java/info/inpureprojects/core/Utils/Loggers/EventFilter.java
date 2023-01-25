@@ -9,9 +9,7 @@ import org.apache.logging.log4j.core.LogEvent;
 import org.apache.logging.log4j.core.Logger;
 import org.apache.logging.log4j.message.Message;
 
-
-public class EventFilter
-    implements Filter {
+public class EventFilter implements Filter {
     private final INpureEventBus bus = new INpureEventBus();
 
     public Filter.Result getOnMismatch() {
@@ -35,7 +33,8 @@ public class EventFilter
     }
 
     public Filter.Result filter(LogEvent event) {
-        EventFMLMessage evt = new EventFMLMessage(event.getLevel(), event.getMessage().getFormattedMessage());
+        EventFMLMessage evt =
+                new EventFMLMessage(event.getLevel(), event.getMessage().getFormattedMessage());
         getBus().post(evt);
         if (evt.isCanceled()) {
             return Filter.Result.DENY;

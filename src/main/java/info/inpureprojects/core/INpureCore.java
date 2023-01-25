@@ -22,18 +22,20 @@ import info.inpureprojects.core.NEI.gtfoMicroblocks.Commands.CommandReload;
 import info.inpureprojects.core.Preloader.ModuleManager;
 import info.inpureprojects.core.Proxy.Proxy;
 import info.inpureprojects.core.Updater.UpdateManager;
-import net.minecraftforge.common.config.Configuration;
-
 import java.io.File;
 import java.util.ArrayList;
+import net.minecraftforge.common.config.Configuration;
 
 @Mod(modid = modInfo.modid, name = modInfo.name, version = modInfo.version, dependencies = modInfo.deps)
 public class INpureCore {
     @Instance("inpure|core")
     public static INpureCore instance;
+
     public static ArrayList<IINpureSubmodule> modules = new ArrayList<IINpureSubmodule>();
+
     @SidedProxy(clientSide = modInfo.proxyClient, serverSide = modInfo.proxyCommon)
     public static Proxy proxy;
+
     public static PropertiesHolder properties;
     public static LogWrapper log;
     public static ArrayList<UpdateManager> managers = new ArrayList<UpdateManager>();
@@ -47,8 +49,8 @@ public class INpureCore {
     public void preinit(FMLPreInitializationEvent evt) {
         PreloaderAPI.preLoaderEvents.register(this);
         log = new LogWrapper(evt.getModLog(), null);
-        properties = new PropertiesHolder(
-            new Configuration(new File(new File(evt.getModConfigurationDirectory(), "INpureProjects/INpureCore"), "INpureCore.cfg")));
+        properties = new PropertiesHolder(new Configuration(
+                new File(new File(evt.getModConfigurationDirectory(), "INpureProjects/INpureCore"), "INpureCore.cfg")));
         proxy.client();
         proxy.setupAPI();
         PreloaderAPI.preLoaderEvents.post(new EventPreloaderRegister());
@@ -67,7 +69,8 @@ public class INpureCore {
         dir = new File(evt.getModConfigurationDirectory(), "INpureProjects");
         for (IINpureSubmodule s : modules) {
             if (!properties.silence_submodule_logging) {
-                proxy.print("Processing preinit event for submodule " + s.getClass().getName());
+                proxy.print(
+                        "Processing preinit event for submodule " + s.getClass().getName());
             }
             s.pre(dir);
         }
@@ -87,7 +90,8 @@ public class INpureCore {
     public void init(FMLInitializationEvent evt) {
         for (IINpureSubmodule s : modules) {
             if (!properties.silence_submodule_logging) {
-                proxy.print("Processing init event for submodule " + s.getClass().getName());
+                proxy.print(
+                        "Processing init event for submodule " + s.getClass().getName());
             }
             s.init();
         }
@@ -97,7 +101,8 @@ public class INpureCore {
     public void postinit(FMLPostInitializationEvent evt) {
         for (IINpureSubmodule s : modules) {
             if (!properties.silence_submodule_logging) {
-                proxy.print("Processing postinit event for submodule " + s.getClass().getName());
+                proxy.print("Processing postinit event for submodule "
+                        + s.getClass().getName());
             }
             s.post();
         }
@@ -112,7 +117,8 @@ public class INpureCore {
         for (IINpureSubmodule s : modules) {
             if (s instanceof IINpureSubmoduleExpanded) {
                 if (!properties.silence_submodule_logging) {
-                    proxy.print("Processing ServerAboutToStart event for submodule " + s.getClass().getName());
+                    proxy.print("Processing ServerAboutToStart event for submodule "
+                            + s.getClass().getName());
                 }
                 ((IINpureSubmoduleExpanded) s).onServerAboutToStart();
             }

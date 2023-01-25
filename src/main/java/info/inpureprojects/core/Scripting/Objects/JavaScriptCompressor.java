@@ -1,6 +1,5 @@
 package info.inpureprojects.core.Scripting.Objects;
 
-
 public class JavaScriptCompressor {
 
     private final String script;
@@ -68,8 +67,7 @@ public class JavaScriptCompressor {
     }
 
     private void renderIdentifier() {
-        if (!this.contentAppendedAfterLastIdentifier)
-            append(' ');
+        if (!this.contentAppendedAfterLastIdentifier) append(' ');
         append(this.ch);
         nextChar();
         while (Character.isJavaIdentifierPart(this.ch)) {

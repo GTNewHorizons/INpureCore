@@ -6,18 +6,15 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.MCVersion;
 import cpw.mods.fml.relauncher.IFMLLoadingPlugin.Name;
 import info.inpureprojects.core.API.PreloaderAPI;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.Map;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @MCVersion("1.7.10")
 @Name("INpurePreLoader")
-public class INpurePreLoader
-    implements IFMLLoadingPlugin {
+public class INpurePreLoader implements IFMLLoadingPlugin {
     public static boolean isDev;
     public static File mc;
     public static File source;

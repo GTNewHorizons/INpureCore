@@ -35,6 +35,5 @@ public class JavaDetection {
     }
 
     @Retention(RetentionPolicy.RUNTIME)
-    public @interface injectJSCallsign {
-    }
+    public @interface injectJSCallsign {}
 }

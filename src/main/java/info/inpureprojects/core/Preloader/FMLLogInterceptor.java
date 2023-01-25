@@ -6,17 +6,15 @@ import info.inpureprojects.core.API.Utils.LogWrapper;
 import info.inpureprojects.core.Utils.Events.EventFMLMessage;
 import info.inpureprojects.core.Utils.Events.EventNEIReady;
 import info.inpureprojects.core.Utils.Loggers.EventFilter;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.Filter;
-
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.Filter;
 
 public class FMLLogInterceptor {
     public LogWrapper log = new LogWrapper(LogManager.getLogger("INpureLogInterceptor"), null);
@@ -28,8 +26,7 @@ public class FMLLogInterceptor {
 
     @INpureSubscribe
     public void onFMLMessage(EventFMLMessage evt) {
-        if (evt.getLevel().equals(Level.TRACE) &&
-            evt.getMessage().contains("Registry add: ")) {
+        if (evt.getLevel().equals(Level.TRACE) && evt.getMessage().contains("Registry add: ")) {
 
             String copy = evt.getMessage().replace("Registry add: ", "");
             String[] split = copy.split("\\s+");
@@ -39,7 +36,6 @@ public class FMLLogInterceptor {
             }
         }
     }
-
 
     @INpureSubscribe
     public void onNEIReady(EventNEIReady evt) {
@@ -52,7 +48,8 @@ public class FMLLogInterceptor {
         Collections.sort(list);
         evt.setList(Collections.unmodifiableList(list));
         this.log.info(
-            "NEI has entered the ready state. Sending data to culling system. List contains %s entries.", Integer.valueOf(this.registry.size()));
+                "NEI has entered the ready state. Sending data to culling system. List contains %s entries.",
+                Integer.valueOf(this.registry.size()));
     }
 
     public FMLLogInterceptor setup() {

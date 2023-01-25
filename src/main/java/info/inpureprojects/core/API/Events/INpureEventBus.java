@@ -1,8 +1,6 @@
 package info.inpureprojects.core.API.Events;
 
 import info.inpureprojects.core.API.Utils.LogWrapper;
-import org.apache.logging.log4j.LogManager;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -10,7 +8,7 @@ import java.lang.annotation.Target;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-
+import org.apache.logging.log4j.LogManager;
 
 public class INpureEventBus {
     private static final LogWrapper log = new LogWrapper(LogManager.getLogger("INpureEventBus"), null);
@@ -46,12 +44,10 @@ public class INpureEventBus {
 
     @Retention(RetentionPolicy.RUNTIME)
     @Target({ElementType.METHOD})
-    public @interface INpureSubscribe {
-    }
+    public @interface INpureSubscribe {}
 
     public static class Listener {
         private final Object instance;
-
 
         private final HashMap<Class<?>, Method> handlers = new HashMap<>();
 

@@ -1,11 +1,6 @@
 package info.inpureprojects.core.Client;
 
 import cpw.mods.fml.common.ModContainer;
-import net.minecraft.client.resources.IResourcePack;
-import net.minecraft.client.resources.data.IMetadataSection;
-import net.minecraft.client.resources.data.IMetadataSerializer;
-import net.minecraft.util.ResourceLocation;
-
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -13,10 +8,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Set;
+import net.minecraft.client.resources.IResourcePack;
+import net.minecraft.client.resources.data.IMetadataSection;
+import net.minecraft.client.resources.data.IMetadataSerializer;
+import net.minecraft.util.ResourceLocation;
 
-
-public class ResourcePackScript
-    implements IResourcePack {
+public class ResourcePackScript implements IResourcePack {
     private final Set<String> set = new HashSet<String>();
     private final ScriptModContainer script;
 
@@ -24,7 +21,6 @@ public class ResourcePackScript
         this.set.add(container.getModId());
         this.script = (ScriptModContainer) container;
     }
-
 
     public InputStream getInputStream(ResourceLocation loc) throws IOException {
         try {
@@ -43,26 +39,21 @@ public class ResourcePackScript
         return actualFile;
     }
 
-
     public boolean resourceExists(ResourceLocation p_110589_1_) {
         return getFileFromLoc(p_110589_1_).exists();
     }
-
 
     public Set<String> getResourceDomains() {
         return this.set;
     }
 
-
     public IMetadataSection getPackMetadata(IMetadataSerializer p_135058_1_, String p_135058_2_) throws IOException {
         return null;
     }
 
-
     public BufferedImage getPackImage() throws IOException {
         return null;
     }
-
 
     public String getPackName() {
         return "INpure_ScriptLoader:" + this.set.toArray()[0];

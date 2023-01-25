@@ -2,7 +2,6 @@ package info.inpureprojects.core.API.Utils;
 
 import java.util.concurrent.TimeUnit;
 
-
 public class Timer {
     private long start;
     private long stop;
@@ -22,6 +21,7 @@ public class Timer {
     }
 
     public void announce(String title) {
-        System.out.println(title + " took " + TimeUnit.MILLISECONDS.convert(this.diff, TimeUnit.NANOSECONDS) + " milliseconds!");
+        System.out.println(
+                title + " took " + TimeUnit.MILLISECONDS.convert(this.diff, TimeUnit.NANOSECONDS) + " milliseconds!");
     }
 }

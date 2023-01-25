@@ -7,14 +7,10 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
-import org.apache.logging.log4j.core.Filter;
 import org.apache.logging.log4j.core.Logger;
 
-
-public class ProxyClient
-    extends ProxyCommon {
-    public void onServerStartClient() {
-    }
+public class ProxyClient extends ProxyCommon {
+    public void onServerStartClient() {}
 
     public void client() {
         super.client();
@@ -29,7 +25,8 @@ public class ProxyClient
 
     public void sendMessageToPlayer(String msg) {
         super.sendMessageToPlayer(msg);
-        (Minecraft.getMinecraft()).thePlayer.addChatMessage(
-            (new ChatComponentText(EnumChatFormatting.GOLD + "[" + "INpureCore" + "]: ")).appendText(EnumChatFormatting.WHITE + msg));
+        (Minecraft.getMinecraft())
+                .thePlayer.addChatMessage((new ChatComponentText(EnumChatFormatting.GOLD + "[" + "INpureCore" + "]: "))
+                        .appendText(EnumChatFormatting.WHITE + msg));
     }
 }

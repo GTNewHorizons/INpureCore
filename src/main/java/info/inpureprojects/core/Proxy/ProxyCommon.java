@@ -9,9 +9,7 @@ import info.inpureprojects.core.INpureCore;
 import info.inpureprojects.core.Scripting.Dynamic.DynamicFactory;
 import info.inpureprojects.core.Scripting.ScriptingCore;
 
-
-public class ProxyCommon
-    extends Proxy {
+public class ProxyCommon extends Proxy {
     public void warning(String msg) {
         INpureCore.log.warn(msg);
     }
@@ -30,7 +28,6 @@ public class ProxyCommon
                 return new ScriptingCore(lang);
             }
 
-
             @SuppressWarnings("rawtypes")
             public Object WrapScript(IScriptingCore core, Object obj, Class Interface) {
                 return DynamicFactory.instance.create(core, obj, Interface);
@@ -39,13 +36,11 @@ public class ProxyCommon
         PreloaderAPI.preLoaderEvents.post(new EventScriptAPIReady());
     }
 
-    public void client() {
-    }
+    public void client() {}
 
     public void sendMessageToPlayer(String msg) {
         print(msg);
     }
 
-    public void onServerStartClient() {
-    }
+    public void onServerStartClient() {}
 }

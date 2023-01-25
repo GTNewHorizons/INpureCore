@@ -1,14 +1,12 @@
 package info.inpureprojects.core.API.Scripting.Toc;
 
-import org.apache.commons.io.IOUtils;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import org.apache.commons.io.IOUtils;
 
 public class TocManager {
     public static final TocManager instance = new TocManager();

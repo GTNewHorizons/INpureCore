@@ -5,14 +5,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import info.inpureprojects.core.INpureCore;
 import info.inpureprojects.core.NEI.gtfoMicroblocks.NEIINpureConfig;
 import info.inpureprojects.core.Utils.Regex.RegxEngine;
+import java.util.ArrayList;
+import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 public class NEIObject {
     private static final ArrayList<String> modids_with_bad_names = new ArrayList<String>();
@@ -49,7 +47,7 @@ public class NEIObject {
         List<ItemStack> stacks = new ArrayList<ItemStack>();
         i.getItem().getSubItems(i.getItem(), null, stacks);
         ArrayList<ItemStack> stackList = new ArrayList<>();
-        if(stacks.size() == 0) {
+        if (stacks.size() == 0) {
             NEIINpureConfig.logger.debug("No subitems found for {}", i.getItem().getUnlocalizedName());
             return;
         }
@@ -65,15 +63,16 @@ public class NEIObject {
     public static UniqueIDSettable getUniqueID(String domain) {
         GameRegistry.UniqueIdentifier id = new GameRegistry.UniqueIdentifier(domain);
         if (StringUtils.countMatches(domain, ":") > 1) {
-            NEIINpureConfig.logger.debug("%s has a bad registry name! Attempting to parse and reassemble correctly...", domain);
+            NEIINpureConfig.logger.debug(
+                    "%s has a bad registry name! Attempting to parse and reassemble correctly...", domain);
             String d = domain.replace(String.format("%s:", id.modId), "");
             NEIINpureConfig.logger.debug(
-                "Parsed bad name into: modid: %s, name: %s. If this is not correct please report it as a bug!", id.modId, d);
+                    "Parsed bad name into: modid: %s, name: %s. If this is not correct please report it as a bug!",
+                    id.modId, d);
             if (INpureCore.properties.complain_about_bad_names && !modids_with_bad_names.contains(id.modId)) {
                 NEIINpureConfig.logger.warn(
-                    "The mod %s is registering items or blocks with bad registry names. Names should not contain multiple colons as it breaks the ability to do reverse-lookups through FML. Please tell whoever made this mod that this should be changed!",
-                    id.modId
-                );
+                        "The mod %s is registering items or blocks with bad registry names. Names should not contain multiple colons as it breaks the ability to do reverse-lookups through FML. Please tell whoever made this mod that this should be changed!",
+                        id.modId);
                 modids_with_bad_names.add(id.modId);
             }
             return new UniqueIDSettable(id.modId, d);
@@ -98,7 +97,9 @@ public class NEIObject {
     }
 
     public void override(String modid, String name, int[] metas) {
-        NEIINpureConfig.logger.debug("%s called. Params: %s, %s, %s", "override", modid, name, NEIINpureConfig.logger.IntArrayToString(metas));
+        NEIINpureConfig.logger.debug(
+                "%s called. Params: %s, %s, %s",
+                "override", modid, name, NEIINpureConfig.logger.IntArrayToString(metas));
         for (String s : find(modid, name)) {
             override_impl(getStack(s), metas);
         }
@@ -127,7 +128,7 @@ public class NEIObject {
         if (i == null) {
             return;
         }
-        API.setItemListEntries(i.getItem(), NEIINpureConfig.buildStackList(i, new int[]{0}));
+        API.setItemListEntries(i.getItem(), NEIINpureConfig.buildStackList(i, new int[] {0}));
         API.hideItem(i);
     }
 
@@ -145,7 +146,8 @@ public class NEIObject {
 
     public void deprecationWarning(String func, String n) {
         NEIINpureConfig.logger.warn(
-            "The function %s is deprecated. Please use %s instead! This function will be removed in a future version!", func, n);
+                "The function %s is deprecated. Please use %s instead! This function will be removed in a future version!",
+                func, n);
     }
 
     @Deprecated
@@ -226,7 +228,6 @@ public class NEIObject {
         HIDE
     }
 
-
     public static class UniqueIDSettable {
         private String modId;
         private String name;
@@ -256,7 +257,6 @@ public class NEIObject {
         public void setName(String name) {
             this.name = name;
         }
-
 
         public String toString() {
             return String.format("%s:%s", this.modId, this.name);
