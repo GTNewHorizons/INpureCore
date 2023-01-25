@@ -1,12 +1,10 @@
 package info.inpureprojects.core.Scripting.Dynamic;
 
 import info.inpureprojects.core.API.Scripting.IScriptingCore;
-
-import javax.script.Invocable;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-
+import javax.script.Invocable;
 
 public class DynamicFactory {
     public static final DynamicFactory instance = new DynamicFactory();
@@ -15,7 +13,7 @@ public class DynamicFactory {
     public Object create(IScriptingCore core, Object obj, Class Interface) {
         try {
             DynamicHandler h = new DynamicHandler(core, obj);
-            return Proxy.newProxyInstance(getClass().getClassLoader(), new Class[]{Interface}, h);
+            return Proxy.newProxyInstance(getClass().getClassLoader(), new Class[] {Interface}, h);
         } catch (Throwable t) {
             t.printStackTrace();
 
@@ -32,7 +30,6 @@ public class DynamicFactory {
             this.scriptClass = scriptClass;
         }
 
-
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             try {
                 if (this.core.getEngine() instanceof Invocable) {
@@ -46,7 +43,7 @@ public class DynamicFactory {
         }
     }
 
-    public static abstract class specialHandler {
+    public abstract static class specialHandler {
         public abstract void handle(Object param1Object, String param1String, Object[] param1ArrayOfObject);
 
         public abstract boolean isObjectCompatible(Object param1Object);

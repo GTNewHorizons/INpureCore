@@ -4,10 +4,8 @@ import info.inpureprojects.core.NEI.gtfoMicroblocks.IGtfoModule;
 import info.inpureprojects.core.NEI.gtfoMicroblocks.NEIINpureConfig;
 import net.minecraft.init.Blocks;
 
-
 @Deprecated
-public class Vanilla
-    implements IGtfoModule {
+public class Vanilla implements IGtfoModule {
     public void run() {
         NEIINpureConfig.hideBlock(Blocks.mob_spawner);
         NEIINpureConfig.hideBlock(Blocks.water);

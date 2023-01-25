@@ -1,12 +1,10 @@
 package info.inpureprojects.core.API.Utils;
 
+import java.io.File;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;
-
-import java.io.File;
-
 
 public class LogWrapper {
     private final Logger log;
@@ -15,12 +13,10 @@ public class LogWrapper {
     public LogWrapper(Logger log, File debug) {
         this.log = log;
         this.debug = debug;
-        if (this.debug != null &&
-            this.debug.exists()) {
+        if (this.debug != null && this.debug.exists()) {
             this.debug.delete();
         }
     }
-
 
     public Logger getLog() {
         return this.log;

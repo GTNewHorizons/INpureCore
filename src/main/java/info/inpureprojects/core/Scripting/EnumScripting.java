@@ -2,15 +2,14 @@ package info.inpureprojects.core.Scripting;
 
 import info.inpureprojects.core.Preloader.JavaDetection;
 import info.inpureprojects.core.Scripting.Objects.JavaScriptCompressor;
-import org.apache.commons.io.IOUtils;
-
+import java.io.InputStream;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
-import java.io.InputStream;
-
+import org.apache.commons.io.IOUtils;
 
 public enum EnumScripting {
     JAVASCRIPT(".js", (JavaDetection.detectJava()).JavaScript_Callsign, new jsHandler());
+
     static {
         m = new ScriptEngineManager(null);
     }
@@ -42,12 +41,11 @@ public enum EnumScripting {
         return m.getEngineByName(this.engine);
     }
 
-    public static abstract class handler {
+    public abstract static class handler {
         public abstract String Import(InputStream param1InputStream);
     }
 
-    public static class jsHandler
-        extends handler {
+    public static class jsHandler extends handler {
         public String Import(InputStream stream) {
             try {
                 String in = IOUtils.toString(stream);

@@ -5,29 +5,20 @@ import info.inpureprojects.core.API.IUpdateCheck;
 import info.inpureprojects.core.API.ReleaseLevel;
 import info.inpureprojects.core.API.Updater;
 import info.inpureprojects.core.modInfo;
-
 import java.io.File;
 
-
-public class UpdateModule
-    implements IINpureSubmodule, IUpdateCheck {
+public class UpdateModule implements IINpureSubmodule, IUpdateCheck {
     public void pre(File configFolder) {
         Updater.register(this);
     }
 
+    public void init() {}
 
-    public void init() {
-    }
-
-
-    public void post() {
-    }
-
+    public void post() {}
 
     public String getVersion() {
         return "1.7.10R1.0.0B9";
     }
-
 
     public String getModId() {
         return "inpure|core";

@@ -6,13 +6,10 @@ import cpw.mods.fml.common.ModMetadata;
 import info.inpureprojects.core.API.Scripting.IScriptingCore;
 import info.inpureprojects.core.API.Scripting.Toc.TocManager;
 import info.inpureprojects.core.INpureCore;
-
 import java.io.File;
 import java.lang.reflect.Field;
 
-
-public class ScriptModContainer
-    extends DummyModContainer {
+public class ScriptModContainer extends DummyModContainer {
     private final File source;
     private final IScriptingCore core;
 

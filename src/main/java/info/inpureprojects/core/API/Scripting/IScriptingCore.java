@@ -3,12 +3,11 @@ package info.inpureprojects.core.API.Scripting;
 import info.inpureprojects.core.API.Events.INpureEventBus;
 import info.inpureprojects.core.API.Scripting.Toc.TocManager;
 import info.inpureprojects.core.API.Utils.LogWrapper;
-
-import javax.script.ScriptEngine;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import javax.script.ScriptEngine;
 
 public interface IScriptingCore {
     void initialize(File paramFile, LogWrapper paramLogWrapper);

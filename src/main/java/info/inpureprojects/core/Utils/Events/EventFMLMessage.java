@@ -3,9 +3,7 @@ package info.inpureprojects.core.Utils.Events;
 import cpw.mods.fml.common.eventhandler.Event;
 import org.apache.logging.log4j.Level;
 
-
-public class EventFMLMessage
-    extends Event {
+public class EventFMLMessage extends Event {
     private Level level;
     private String message;
 
@@ -29,7 +27,6 @@ public class EventFMLMessage
     public void setMessage(String message) {
         this.message = message;
     }
-
 
     public boolean isCancelable() {
         return true;

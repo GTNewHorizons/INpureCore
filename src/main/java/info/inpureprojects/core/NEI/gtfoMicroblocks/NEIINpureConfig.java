@@ -25,10 +25,6 @@ import info.inpureprojects.core.NEI.gtfoMicroblocks.ScriptObjects.ForgeMicrobloc
 import info.inpureprojects.core.NEI.gtfoMicroblocks.ScriptObjects.JavaObject;
 import info.inpureprojects.core.NEI.gtfoMicroblocks.ScriptObjects.NEIObject;
 import info.inpureprojects.core.Utils.Events.EventNEIReady;
-import net.minecraft.block.Block;
-import net.minecraft.item.ItemStack;
-import org.apache.logging.log4j.LogManager;
-
 import java.io.File;
 import java.io.PrintWriter;
 import java.net.URL;
@@ -36,6 +32,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
+import org.apache.logging.log4j.LogManager;
 
 public class NEIINpureConfig implements IConfigureNEI {
     public static NEIINpureConfig instance;
@@ -44,7 +43,8 @@ public class NEIINpureConfig implements IConfigureNEI {
     public static List<String> reg;
     public static NEIObject NEILib;
     private static final File logs = new File(INpureCore.dir, "logs");
-    public static final LogWrapper logger = new LogWrapper(LogManager.getLogger("INpureCullingEngine"), new File(logs, "debug.log"));
+    public static final LogWrapper logger =
+            new LogWrapper(LogManager.getLogger("INpureCullingEngine"), new File(logs, "debug.log"));
     private static int errorCount = 0;
     private int count = 0;
 
@@ -94,8 +94,12 @@ public class NEIINpureConfig implements IConfigureNEI {
 
     @INpureSubscribe
     public void onScriptError(EventScriptError evt) {
-        INpureCore.proxy.sendMessageToPlayer("A script error has occured. A log file has been created in config/INpureProjects/logs.");
-        String fileName = (new SimpleDateFormat("yyyyMMddhhmm")).format(new Date()).concat("-").concat(String.valueOf(errorCount++).concat(".txt"));
+        INpureCore.proxy.sendMessageToPlayer(
+                "A script error has occured. A log file has been created in config/INpureProjects/logs.");
+        String fileName = (new SimpleDateFormat("yyyyMMddhhmm"))
+                .format(new Date())
+                .concat("-")
+                .concat(String.valueOf(errorCount++).concat(".txt"));
         PrintWriter w = Streams.instance.getFilePrintWriter(new File(logs, fileName));
         evt.getT().printStackTrace(w);
         Streams.instance.close(w);

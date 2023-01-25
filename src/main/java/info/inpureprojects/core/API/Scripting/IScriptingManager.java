@@ -1,6 +1,5 @@
 package info.inpureprojects.core.API.Scripting;
 
-
 public interface IScriptingManager {
     IScriptingCore create(SupportedLanguages paramSupportedLanguages);
 

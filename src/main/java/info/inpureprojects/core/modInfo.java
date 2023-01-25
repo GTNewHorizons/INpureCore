@@ -2,7 +2,6 @@ package info.inpureprojects.core;
 
 import info.inpureprojects.core.API.ReleaseLevel;
 
-
 public class modInfo {
     public static final String modid = "inpure|core";
     public static final String name = "INpureCore";

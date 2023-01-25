@@ -3,11 +3,9 @@ package info.inpureprojects.core.NEI.gtfoMicroblocks.ScriptObjects;
 import appeng.api.AEApi;
 import cpw.mods.fml.common.registry.GameRegistry;
 import info.inpureprojects.core.NEI.gtfoMicroblocks.NEIINpureConfig;
-import net.minecraft.item.ItemStack;
-
 import java.lang.reflect.Field;
 import java.util.List;
-
+import net.minecraft.item.ItemStack;
 
 public class AEObject {
     public AEObject() {
@@ -24,9 +22,20 @@ public class AEObject {
     public List<ItemStack> getSubTypes() {
         NEIINpureConfig.logger.debug("getSubTypes called.");
         try {
-            Field f = AEApi.instance().definitions().items().facade().maybeItem().get().getClass().getDeclaredField("subTypes");
+            Field f = AEApi.instance()
+                    .definitions()
+                    .items()
+                    .facade()
+                    .maybeItem()
+                    .get()
+                    .getClass()
+                    .getDeclaredField("subTypes");
             f.setAccessible(true);
-            List<ItemStack> list = (List<ItemStack>) f.get((AEApi.instance().definitions().items()).facade().maybeItem().get());
+            List<ItemStack> list =
+                    (List<ItemStack>) f.get((AEApi.instance().definitions().items())
+                            .facade()
+                            .maybeItem()
+                            .get());
             return list;
         } catch (Throwable t) {
             t.printStackTrace();
@@ -36,7 +45,8 @@ public class AEObject {
     }
 
     public String getFacadeItem() {
-        NEIObject.UniqueIDSettable id = new NEIObject.UniqueIDSettable(GameRegistry.findUniqueIdentifierFor(AEApi.instance().definitions().items().facade().maybeItem().get()));
+        NEIObject.UniqueIDSettable id = new NEIObject.UniqueIDSettable(GameRegistry.findUniqueIdentifierFor(
+                AEApi.instance().definitions().items().facade().maybeItem().get()));
         NEIINpureConfig.logger.debug("getFacadeItem called. Returned: %s:%s", id.getModId(), id.getName());
         return String.format("%s:%s", id.getModId(), id.getName());
     }

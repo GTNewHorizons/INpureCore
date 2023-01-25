@@ -1,6 +1,7 @@
 package info.inpureprojects.core.API.Block;
 
 import info.inpureprojects.core.API.MovedFrom;
+import java.util.List;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -10,12 +11,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-import java.util.List;
-
-
 @MovedFrom(mod = "OpenBees")
-public abstract class BlockBase
-    extends BlockContainer {
+public abstract class BlockBase extends BlockContainer {
     private boolean hasGUI;
     private int idShift = 0;
     private Object modInstance;
@@ -41,20 +38,27 @@ public abstract class BlockBase
         this.idShift = idShift;
     }
 
-
     public abstract IIcon getIcon(int paramInt1, int paramInt2);
 
     public int damageDropped(int meta) {
         return meta;
     }
 
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
+    public boolean onBlockActivated(
+            World world,
+            int x,
+            int y,
+            int z,
+            EntityPlayer player,
+            int p_149727_6_,
+            float p_149727_7_,
+            float p_149727_8_,
+            float p_149727_9_) {
         if (this.hasGUI) {
             player.openGui(this.modInstance, this.idShift + world.getBlockMetadata(x, y, z), world, x, y, z);
         }
         return super.onBlockActivated(world, x, y, z, player, p_149727_6_, p_149727_7_, p_149727_8_, p_149727_9_);
     }
-
 
     public abstract void getSubBlocks(Item paramItem, CreativeTabs paramCreativeTabs, List paramList);
 
