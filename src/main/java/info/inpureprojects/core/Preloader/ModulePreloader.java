@@ -1,9 +1,11 @@
 package info.inpureprojects.core.Preloader;
 
-import info.inpureprojects.core.API.IINpureSubmoduleExpanded;
 import java.io.File;
 
+import info.inpureprojects.core.API.IINpureSubmoduleExpanded;
+
 public class ModulePreloader implements IINpureSubmoduleExpanded {
+
     public void onServerAboutToStart() {
         INpurePreLoader.fmlLogInterceptor.unhook();
     }

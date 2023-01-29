@@ -1,12 +1,14 @@
 package info.inpureprojects.core.API.Block;
 
-import info.inpureprojects.core.API.MovedFrom;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
+import info.inpureprojects.core.API.MovedFrom;
+
 @MovedFrom(mod = "OpenBees")
 public abstract class ItemBlockBase extends ItemBlock {
+
     public ItemBlockBase(Block block) {
         super(block);
     }

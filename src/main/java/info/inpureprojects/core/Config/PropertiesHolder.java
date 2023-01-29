@@ -1,11 +1,14 @@
 package info.inpureprojects.core.Config;
 
-import info.inpureprojects.core.INpureCore;
 import java.lang.reflect.Field;
+
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
+import info.inpureprojects.core.INpureCore;
+
 public class PropertiesHolder {
+
     @Option(
             category = "tweaks",
             key = "Shut_Up_Missing_Texture_Spam",

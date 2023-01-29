@@ -10,6 +10,7 @@ import info.inpureprojects.core.Scripting.Dynamic.DynamicFactory;
 import info.inpureprojects.core.Scripting.ScriptingCore;
 
 public class ProxyCommon extends Proxy {
+
     public void warning(String msg) {
         INpureCore.log.warn(msg);
     }
@@ -24,6 +25,7 @@ public class ProxyCommon extends Proxy {
 
     public void setupAPI() {
         INpureAPI.manager = new IScriptingManager() {
+
             public IScriptingCore create(IScriptingManager.SupportedLanguages lang) {
                 return new ScriptingCore(lang);
             }

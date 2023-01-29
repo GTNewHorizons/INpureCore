@@ -1,17 +1,21 @@
 package info.inpureprojects.core.Scripting;
 
-import info.inpureprojects.core.INpureCore;
-import info.inpureprojects.core.Preloader.JavaDetection;
-import info.inpureprojects.core.Scripting.Objects.JavaScriptCompressor;
 import java.io.InputStream;
 import java.util.stream.Collectors;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
+
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import info.inpureprojects.core.INpureCore;
+import info.inpureprojects.core.Preloader.JavaDetection;
+import info.inpureprojects.core.Scripting.Objects.JavaScriptCompressor;
+
 public enum EnumScripting {
+
     JAVASCRIPT(".js", (JavaDetection.detectJava()).JavaScript_Callsign, new jsHandler());
 
     static {
@@ -51,18 +55,19 @@ public enum EnumScripting {
             INpureCore.log.warn(
                     "Could not find a scripting engine for handling %s files. Available engine names: %s",
                     extension,
-                    m.getEngineFactories().stream()
-                            .map(ScriptEngineFactory::getEngineName)
+                    m.getEngineFactories().stream().map(ScriptEngineFactory::getEngineName)
                             .collect(Collectors.joining(", ")));
         }
         return engine;
     }
 
     public abstract static class handler {
+
         public abstract String Import(InputStream param1InputStream);
     }
 
     public static class jsHandler extends handler {
+
         public String Import(InputStream stream) {
             try {
                 String in = IOUtils.toString(stream);

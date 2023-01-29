@@ -1,11 +1,13 @@
 package info.inpureprojects.core.Preloader;
 
-import cpw.mods.fml.common.registry.GameData;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import cpw.mods.fml.common.registry.GameData;
+
 public class TechnicHandler {
+
     public static final TechnicHandler instance = new TechnicHandler();
 
     @SuppressWarnings("unchecked")

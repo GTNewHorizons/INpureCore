@@ -1,15 +1,18 @@
 package info.inpureprojects.core.Proxy;
 
-import info.inpureprojects.core.Client.ClientLogListener;
-import info.inpureprojects.core.INpureCore;
-import info.inpureprojects.core.Utils.Loggers.EventFilter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
+
 import org.apache.logging.log4j.core.Logger;
 
+import info.inpureprojects.core.Client.ClientLogListener;
+import info.inpureprojects.core.INpureCore;
+import info.inpureprojects.core.Utils.Loggers.EventFilter;
+
 public class ProxyClient extends ProxyCommon {
+
     public void onServerStartClient() {}
 
     public void client() {
@@ -25,8 +28,8 @@ public class ProxyClient extends ProxyCommon {
 
     public void sendMessageToPlayer(String msg) {
         super.sendMessageToPlayer(msg);
-        (Minecraft.getMinecraft())
-                .thePlayer.addChatMessage((new ChatComponentText(EnumChatFormatting.GOLD + "[" + "INpureCore" + "]: "))
+        (Minecraft.getMinecraft()).thePlayer.addChatMessage(
+                (new ChatComponentText(EnumChatFormatting.GOLD + "[" + "INpureCore" + "]: "))
                         .appendText(EnumChatFormatting.WHITE + msg));
     }
 }

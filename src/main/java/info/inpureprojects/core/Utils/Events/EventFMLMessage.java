@@ -1,9 +1,11 @@
 package info.inpureprojects.core.Utils.Events;
 
-import cpw.mods.fml.common.eventhandler.Event;
 import org.apache.logging.log4j.Level;
 
+import cpw.mods.fml.common.eventhandler.Event;
+
 public class EventFMLMessage extends Event {
+
     private Level level;
     private String message;
 

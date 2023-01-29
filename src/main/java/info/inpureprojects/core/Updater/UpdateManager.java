@@ -1,21 +1,25 @@
 package info.inpureprojects.core.Updater;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.List;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
+
+import org.apache.commons.io.IOUtils;
+
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import info.inpureprojects.core.API.IUpdateCheck;
 import info.inpureprojects.core.API.ReleaseLevel;
 import info.inpureprojects.core.INpureCore;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.util.List;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumChatFormatting;
-import org.apache.commons.io.IOUtils;
 
 public class UpdateManager {
+
     private final UThread thread;
     private int lastPoll = 400;
     private boolean alreadyDisplayed = false;
@@ -45,16 +49,20 @@ public class UpdateManager {
         }
         if (!this.alreadyDisplayed && this.thread.checkComplete && this.thread.updateAvailable) {
             EntityPlayer player = evt.player;
-            player.addChatMessage((new ChatComponentText(
-                            EnumChatFormatting.GOLD + "[" + this.thread.update.getModName() + "]:"))
-                    .appendText(EnumChatFormatting.WHITE + " A new version is available: " + EnumChatFormatting.AQUA
-                            + this.thread.latestVersion.replace("1.7.10", "") + EnumChatFormatting.WHITE));
+            player.addChatMessage(
+                    (new ChatComponentText(EnumChatFormatting.GOLD + "[" + this.thread.update.getModName() + "]:"))
+                            .appendText(
+                                    EnumChatFormatting.WHITE + " A new version is available: "
+                                            + EnumChatFormatting.AQUA
+                                            + this.thread.latestVersion.replace("1.7.10", "")
+                                            + EnumChatFormatting.WHITE));
             this.alreadyDisplayed = true;
             FMLCommonHandler.instance().bus().unregister(this);
         }
     }
 
     public static class UThread extends Thread {
+
         private final IUpdateCheck update;
         private boolean updateAvailable = false;
         private boolean checkComplete = false;

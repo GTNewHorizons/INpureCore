@@ -1,13 +1,15 @@
 package info.inpureprojects.core.Updater;
 
+import java.io.File;
+
 import info.inpureprojects.core.API.IINpureSubmodule;
 import info.inpureprojects.core.API.IUpdateCheck;
 import info.inpureprojects.core.API.ReleaseLevel;
 import info.inpureprojects.core.API.Updater;
 import info.inpureprojects.core.modInfo;
-import java.io.File;
 
 public class UpdateModule implements IINpureSubmodule, IUpdateCheck {
+
     public void pre(File configFolder) {
         Updater.register(this);
     }

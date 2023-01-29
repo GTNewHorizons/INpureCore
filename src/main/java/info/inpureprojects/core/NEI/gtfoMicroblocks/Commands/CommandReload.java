@@ -1,14 +1,17 @@
 package info.inpureprojects.core.NEI.gtfoMicroblocks.Commands;
 
-import info.inpureprojects.core.INpureCore;
-import info.inpureprojects.core.NEI.gtfoMicroblocks.NEIINpureConfig;
-import info.inpureprojects.core.NEI.gtfoMicroblocks.NEIINpureTooltipConfig;
 import java.util.Arrays;
 import java.util.List;
+
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 
+import info.inpureprojects.core.INpureCore;
+import info.inpureprojects.core.NEI.gtfoMicroblocks.NEIINpureConfig;
+import info.inpureprojects.core.NEI.gtfoMicroblocks.NEIINpureTooltipConfig;
+
 public class CommandReload implements ICommand {
+
     public String getCommandName() {
         return "INpureCore";
     }

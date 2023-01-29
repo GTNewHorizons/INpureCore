@@ -4,6 +4,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 public class JavaDetection {
+
     public static VERSION detectJava() {
         for (VERSION v : VERSION.values()) {
             if (v.compare(System.getProperty("java.specification.version"))) {
@@ -14,9 +15,11 @@ public class JavaDetection {
     }
 
     public enum VERSION {
+
         JAVA7("1.7", "JavaScript"),
         JAVA8("1.8", "nashorn"),
         UNKNOWN("Unknown", "JavaScript");
+
         public String JavaScript_Callsign;
         private final String prop;
 

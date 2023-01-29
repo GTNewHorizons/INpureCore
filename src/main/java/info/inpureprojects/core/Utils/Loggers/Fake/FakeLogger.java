@@ -8,6 +8,7 @@ import org.apache.logging.log4j.message.MessageFactory;
 
 @Deprecated
 public class FakeLogger implements Logger {
+
     public void catching(Level level, Throwable t) {}
 
     public void catching(Throwable t) {}

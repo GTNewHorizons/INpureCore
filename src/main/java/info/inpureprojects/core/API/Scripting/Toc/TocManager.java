@@ -6,9 +6,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
 import org.apache.commons.io.IOUtils;
 
 public class TocManager {
+
     public static final TocManager instance = new TocManager();
 
     public TableofContents read(File file) {
@@ -76,6 +78,7 @@ public class TocManager {
     }
 
     public static class TableofContents {
+
         private String title;
         private String author;
         private String version;

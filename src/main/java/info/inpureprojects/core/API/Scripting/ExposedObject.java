@@ -1,6 +1,7 @@
 package info.inpureprojects.core.API.Scripting;
 
 public class ExposedObject {
+
     private final String identifier;
     private final Object obj;
 

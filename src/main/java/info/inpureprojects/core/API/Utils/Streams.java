@@ -13,9 +13,11 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.Reader;
 import java.io.Writer;
+
 import org.apache.commons.compress.utils.IOUtils;
 
 public class Streams {
+
     public static final Streams instance = new Streams();
 
     public PrintWriter getFilePrintWriter(File f) {

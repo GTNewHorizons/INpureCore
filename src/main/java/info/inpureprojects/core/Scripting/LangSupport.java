@@ -3,6 +3,7 @@ package info.inpureprojects.core.Scripting;
 import java.net.URL;
 
 public class LangSupport {
+
     private final String[] fileName = new String[2];
     private final URL[] urls = new URL[2];
     private boolean hasSecondaryDep = false;

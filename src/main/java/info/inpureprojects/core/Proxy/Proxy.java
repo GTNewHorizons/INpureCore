@@ -1,6 +1,7 @@
 package info.inpureprojects.core.Proxy;
 
 public abstract class Proxy {
+
     public abstract void warning(String paramString);
 
     public abstract void print(String paramString);

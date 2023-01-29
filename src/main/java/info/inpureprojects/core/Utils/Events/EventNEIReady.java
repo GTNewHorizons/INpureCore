@@ -1,9 +1,11 @@
 package info.inpureprojects.core.Utils.Events;
 
-import cpw.mods.fml.common.eventhandler.Event;
 import java.util.List;
 
+import cpw.mods.fml.common.eventhandler.Event;
+
 public class EventNEIReady extends Event {
+
     private List<String> list;
 
     public List<String> getList() {

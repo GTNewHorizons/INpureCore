@@ -3,6 +3,7 @@ package info.inpureprojects.core.API.Utils;
 import java.util.concurrent.TimeUnit;
 
 public class Timer {
+
     private long start;
     private long stop;
     private long diff;

@@ -1,14 +1,17 @@
 package info.inpureprojects.core.NEI.gtfoMicroblocks.ScriptObjects;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import info.inpureprojects.core.NEI.gtfoMicroblocks.NEIINpureConfig;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+import info.inpureprojects.core.NEI.gtfoMicroblocks.NEIINpureConfig;
+
 public class CreativeObject {
+
     private final LinkedHashMap<String, CreativeTabs> tabs = new LinkedHashMap<String, CreativeTabs>();
 
     public CreativeObject() {

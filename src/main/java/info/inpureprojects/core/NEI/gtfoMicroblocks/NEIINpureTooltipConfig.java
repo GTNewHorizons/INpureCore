@@ -1,14 +1,17 @@
 package info.inpureprojects.core.NEI.gtfoMicroblocks;
 
+import java.util.List;
+
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.item.ItemStack;
+
 import codechicken.nei.api.IConfigureNEI;
 import codechicken.nei.guihook.GuiContainerManager;
 import codechicken.nei.guihook.IContainerTooltipHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
-import java.util.List;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.item.ItemStack;
 
 public class NEIINpureTooltipConfig implements IConfigureNEI {
+
     public static boolean tooltips_enabled = false;
 
     public void loadConfig() {
@@ -24,12 +27,13 @@ public class NEIINpureTooltipConfig implements IConfigureNEI {
     }
 
     public static class TooltipHandler implements IContainerTooltipHandler {
+
         public List<String> handleTooltip(GuiContainer guiContainer, int i, int i2, List<String> strings) {
             return strings;
         }
 
-        public List<String> handleItemDisplayName(
-                GuiContainer guiContainer, ItemStack itemStack, List<String> strings) {
+        public List<String> handleItemDisplayName(GuiContainer guiContainer, ItemStack itemStack,
+                List<String> strings) {
             if (NEIINpureTooltipConfig.tooltips_enabled) {
                 GameRegistry.UniqueIdentifier i = GameRegistry.findUniqueIdentifierFor(itemStack.getItem());
                 strings.add(String.format("%s:%s", i.modId, i.name));
@@ -37,8 +41,8 @@ public class NEIINpureTooltipConfig implements IConfigureNEI {
             return strings;
         }
 
-        public List<String> handleItemTooltip(
-                GuiContainer guiContainer, ItemStack itemStack, int i, int i2, List<String> strings) {
+        public List<String> handleItemTooltip(GuiContainer guiContainer, ItemStack itemStack, int i, int i2,
+                List<String> strings) {
             return strings;
         }
     }

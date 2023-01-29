@@ -1,22 +1,25 @@
 package info.inpureprojects.core.Preloader;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.Filter;
+
 import info.inpureprojects.core.API.Events.INpureEventBus.INpureSubscribe;
 import info.inpureprojects.core.API.PreloaderAPI;
 import info.inpureprojects.core.API.Utils.LogWrapper;
 import info.inpureprojects.core.Utils.Events.EventFMLMessage;
 import info.inpureprojects.core.Utils.Events.EventNEIReady;
 import info.inpureprojects.core.Utils.Loggers.EventFilter;
-import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Set;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.Filter;
 
 public class FMLLogInterceptor {
+
     public LogWrapper log = new LogWrapper(LogManager.getLogger("INpureLogInterceptor"), null);
     private Logger fmlOriginal;
     private Field myLog;

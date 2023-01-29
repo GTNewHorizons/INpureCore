@@ -1,12 +1,14 @@
 package info.inpureprojects.core.API.Utils;
 
 import java.io.File;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;
 
 public class LogWrapper {
+
     private final Logger log;
     private final File debug;
 

@@ -1,6 +1,5 @@
 package info.inpureprojects.core.Client;
 
-import cpw.mods.fml.common.ModContainer;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,12 +7,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashSet;
 import java.util.Set;
+
 import net.minecraft.client.resources.IResourcePack;
 import net.minecraft.client.resources.data.IMetadataSection;
 import net.minecraft.client.resources.data.IMetadataSerializer;
 import net.minecraft.util.ResourceLocation;
 
+import cpw.mods.fml.common.ModContainer;
+
 public class ResourcePackScript implements IResourcePack {
+
     private final Set<String> set = new HashSet<String>();
     private final ScriptModContainer script;
 

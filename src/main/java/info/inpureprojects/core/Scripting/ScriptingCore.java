@@ -1,5 +1,21 @@
 package info.inpureprojects.core.Scripting;
 
+import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+
+import javax.script.ScriptEngine;
+
+import net.minecraftforge.common.config.Configuration;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.filefilter.TrueFileFilter;
+
 import cpw.mods.fml.common.FMLCommonHandler;
 import info.inpureprojects.core.API.Events.EventScriptError;
 import info.inpureprojects.core.API.Events.INpureEventBus;
@@ -14,21 +30,10 @@ import info.inpureprojects.core.API.Utils.Streams;
 import info.inpureprojects.core.Client.ScriptModContainer;
 import info.inpureprojects.core.Preloader.INpurePreLoader;
 import info.inpureprojects.core.Scripting.Objects.Exposed.Console;
-import java.io.File;
-import java.io.InputStream;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import javax.script.ScriptEngine;
-import net.minecraftforge.common.config.Configuration;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.commons.io.filefilter.TrueFileFilter;
 
 public class ScriptingCore implements IScriptingCore {
-    private static final ExposedObject[] bundled = new ExposedObject[] {new ExposedObject("out", new Console())};
+
+    private static final ExposedObject[] bundled = new ExposedObject[] { new ExposedObject("out", new Console()) };
     private static final HashMap<String, LangSupport> supported = new HashMap<String, LangSupport>();
     private ScriptEngine engine;
     private ArrayList<TocManager.TableofContents> loaded = new ArrayList<TocManager.TableofContents>();
@@ -122,7 +127,9 @@ public class ScriptingCore implements IScriptingCore {
                     TocManager.TableofContents c = TocManager.instance.read(f);
                     this.logger.info(
                             "Loading table of contents for module: %s, %s, Author: %s",
-                            c.getTitle(), c.getVersion(), c.getAuthor());
+                            c.getTitle(),
+                            c.getVersion(),
+                            c.getAuthor());
                     FMLCommonHandler.instance().addModToResourcePack(new ScriptModContainer(c, dir, this));
                     getEngine().put(c.getTitle() + "_version", c.getVersion());
                     if (c.getBootstrap() != null) {

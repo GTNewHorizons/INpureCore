@@ -1,6 +1,7 @@
 package info.inpureprojects.core.Utils.Regex;
 
 public class RegxEngine {
+
     public static boolean match(String regx, String candidate) {
         if (regx.isEmpty()) {
             return false;
