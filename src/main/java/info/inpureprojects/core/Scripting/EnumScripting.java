@@ -19,7 +19,7 @@ public enum EnumScripting {
     JAVASCRIPT(".js", (JavaDetection.detectJava()).JavaScript_Callsign, new jsHandler());
 
     static {
-        m = new ScriptEngineManager(EnumScripting.class.getClassLoader());
+        m = new ScriptEngineManager(null);
     }
 
     public static ScriptEngineManager m;
@@ -47,6 +47,10 @@ public enum EnumScripting {
 
     public ScriptEngine getScriptEngine() {
         ScriptEngine engine = m.getEngineByName(this.engine);
+        if (engine == null) {
+            m = new ScriptEngineManager(EnumScripting.class.getClassLoader());
+            engine = m.getEngineByName(this.engine);
+        }
         if (engine == null) {
             // Try any other engine supporting the given extension
             engine = m.getEngineByExtension(StringUtils.removeStart(extension, "."));
